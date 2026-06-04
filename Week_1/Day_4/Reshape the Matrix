@@ -1,0 +1,15 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+     int arr[][] = new int [r][c];
+     int k =0,l=0;
+     if(mat.length * mat[0].length != r * c)
+    return mat;
+     for(int i = 0 ; i<r ;i++){
+        for(int j = 0 ; j<c ;j++){
+            int idx = i*c+j;
+            arr[i][j] = mat[idx/mat[0].length][idx%mat[0].length];
+        }
+     }   
+     return arr;
+    }
+}
