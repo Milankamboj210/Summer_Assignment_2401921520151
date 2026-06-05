@@ -1,0 +1,26 @@
+class Solution {
+    public boolean isPalindrome(String s) {     
+        int start = 0;
+        int end = s.length()-1;
+        while(start<end){
+            char sc = s.charAt(start);
+            char ec = s.charAt(end);
+            if (!((sc >= 'a' && sc <= 'z') || (sc >= 'A' && sc <= 'Z') || (sc >= '0' && sc <= '9'))) {
+                start++;
+                continue;
+            }
+            if (!((ec >= 'a' && ec <= 'z') || (ec >= 'A' && ec <= 'Z') || (ec >= '0' && ec <= '9'))) {
+                end--;
+                continue;
+            }
+            if (sc >= 'A' && sc <= 'Z') sc = (char)(sc + 32);
+            if (ec >= 'A' && ec <= 'Z') ec = (char)(ec + 32);
+
+            if (sc != ec) return false;
+
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
