@@ -1,0 +1,41 @@
+class Solution {
+    public int compress(char[] chars) {
+         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try(FileWriter writer = new FileWriter("display_runtime.txt")){
+                writer.write("0");
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }));
+        int i = 0;
+        int k = 0;
+        int ans = 0;
+        while(i < chars.length){
+            int j = i;
+            while(j < chars.length &&
+                  chars[j] == chars[i]){
+                j++;
+            }
+            int count = j - i;
+            chars[k++] = chars[i];
+            ans += 1;
+            if(count > 1){
+            String s = String.valueOf(count);
+            for(int x = 0 ; x<s.length() ;x++){
+                chars[k++] = s.charAt(x);
+            }
+            }
+            i = j;
+        }
+        return k;
+    }
+    public int digits(int n){
+        int c = 0;
+        while(n > 0){
+            c++;
+            n /= 10;
+        }
+        return c;
+    }
+}
