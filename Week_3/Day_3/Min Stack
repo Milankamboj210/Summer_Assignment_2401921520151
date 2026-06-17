@@ -1,0 +1,31 @@
+import java.util.*;
+
+class MinStack {
+
+    Stack<Map.Entry<Integer, Integer>> Ms;
+
+    public MinStack() {
+        Ms = new Stack<>();
+    }
+    
+    public void push(int val) {
+        if (Ms.isEmpty()) {
+            Ms.push(new AbstractMap.SimpleEntry<>(val, val));
+        } else {
+            int minVal = Math.min(val, Ms.peek().getValue());
+            Ms.push(new AbstractMap.SimpleEntry<>(val, minVal));
+        }
+    }
+    
+    public void pop() {
+        Ms.pop();
+    }
+    
+    public int top() {
+        return Ms.peek().getKey();
+    }
+    
+    public int getMin() {
+        return Ms.peek().getValue();
+    }
+}
